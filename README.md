@@ -25,3 +25,28 @@ Qualifying: Sat 07:00
 Race: Sun 06:00
 ```
 
+```
+python3 pitwall standings
+```
+
+Output:
+```
+Driver Standings
+
+1. Max Verstappen - 410 pts
+2. Lando Norris - 315 pts
+3. Charles Leclerc - 289 pts
+4. Lewis Hamilton - 230 pts
+```
+
+```
+python3 pitwall driver hamilton
+```
+
+```
+Lewis Hamilton
+Team: Mercedes
+Wins: 103
+Podiums: 197
+Championships: 7
+```
