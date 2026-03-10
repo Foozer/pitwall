@@ -1,18 +1,32 @@
 import argparse
 
-def main():
-    parser = argparse.ArgumentParser(description="F1 info on the CLI")
-    parser.add_argument("next", help="give information about the next race weekend")
-    parser.add_argument("standings", help="Gives the current driver standings")
-    parser.add_argument("driver", help="gives information about the selected driver")
+def next():
+    print("next race is China")
 
-    parser.add_argument("-v", "--verbose", action="store_true", help="incrase output verbosity")
-    args = parser.parse_args()
-    if args.verbose:
-        print("verbosity turned on")
-        print(args.echo)
-    else:
-        print(args.echo)
+def standings():
+    print("standings")
+
+def driver():
+    print("driver details...")
+
+def main():
+    global_parser = argparse.ArgumentParser(prog="Pitwall",description="F1 info on the CLI")
+    subparsers = global_parser.add_subparsers(
+        title="subcommands", help="Pitwall Options"
+    )
+
+    next_parser = subparsers.add_parser("next", help="give information about the next race weekend")
+    next_parser.set_defaults(func=next)
+
+    standings_parser = subparsers.add_parser("standings", help="Gives the current driver standings")
+    standings_parser.set_defaults(func=standings)
+
+    driver_parser = subparsers.add_parser("driver", help="gives information about the selected driver")
+    driver_parser.set_defaults(func=driver)
+
+    args = global_parser.parse_args()
+
+    args.func()
 
 if __name__ == "__main__":
     main()
